@@ -1,4 +1,4 @@
-package fr.ance.selectors;
+package io.github.troimaclure.selectors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import fr.ance.Q;
-import fr.ance.exceptions.QException;
+import io.github.troimaclure.Q;
+import io.github.troimaclure.exceptions.QException;
 import lombok.RequiredArgsConstructor;
 
 /**

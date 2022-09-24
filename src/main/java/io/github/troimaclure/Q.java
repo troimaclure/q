@@ -1,10 +1,10 @@
-package fr.ance;
+package io.github.troimaclure;
 
 import java.util.Arrays;
 import java.util.List;
 
-import fr.ance.selectors.DualSelector;
-import fr.ance.selectors.SingleSelector;
+import io.github.troimaclure.selectors.DualSelector;
+import io.github.troimaclure.selectors.SingleSelector;
 
 /**
  *

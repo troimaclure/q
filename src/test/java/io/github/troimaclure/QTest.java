@@ -1,4 +1,4 @@
-package fr.ance;
+package io.github.troimaclure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -16,8 +16,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fr.ance.exceptions.QException;
-import fr.ance.selectors.DualSelector;
+import io.github.troimaclure.Q;
+import io.github.troimaclure.exceptions.QException;
+import io.github.troimaclure.selectors.DualSelector;
 
 public class QTest {
 

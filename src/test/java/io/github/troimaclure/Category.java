@@ -1,4 +1,4 @@
-package fr.ance;
+package io.github.troimaclure;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

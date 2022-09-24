@@ -1,4 +1,4 @@
-package fr.ance.exceptions;
+package io.github.troimaclure.exceptions;
 
 public class QException extends RuntimeException {
     String code;
