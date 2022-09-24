@@ -25,6 +25,30 @@ public class DualSelector<T, U> {
     private final List<U> compare;
     private List<Pair<T, U>> pairs;
 
+    /**
+     * <h3>Usage</h3>
+     * 
+     * <pre>{@code
+     * Q.from(listA).join(listB).on((a, b) -> Objects.equals(a.prop, b.prop));
+     * }</pre>
+     * <p>
+     * Create Dual selector that handle
+     * org.apache.commons.lang3.tuple.Pair<Typeof(listA) , Typeof(ListB)>
+     * </p>
+     * <b>All objects that are not matched on lists args will not be injected to the
+     * pairs. </b>
+     * <h4>Exemple</h4>
+     * 
+     * <pre>{@code
+     * var joining = Q.from(Arrays.asList("a", "b", "c")).join(Arrays.asList("a", "b"))
+     *         .on((a, b) -> Objects.equals(a, b)).toList();
+     * // joining will not contains "c" from first arg list
+     * // joining will equals List<Pair> => ("a" , "a") , ("b" , "b")
+     * }</pre>
+     * 
+     * @param consumer
+     * @return {@code DualSelector<T , U>}
+     */
     public DualSelector<T, U> on(BiPredicate<T, U> consumer) {
         pairs = new ArrayList<>();
         for (T t1 : list) {

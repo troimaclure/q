@@ -253,7 +253,14 @@ public class QTest {
 
     @Test
     public void testGrouping() {
-        var map = Q.from(products).groupBy(Product::getId_category);
+        var map = Q.from(products).groupBy(Product::getId_category).toList();
+        System.out.println(map);
+        assertTrue(map.size() == 6);
+    }
+
+    @Test
+    public void testGroupingMap() {
+        var map = Q.from(products).groupBy(Product::getId_category).toMap(e -> e.getKey(), e -> e.getValue());
         System.out.println(map);
         assertTrue(map.keySet().size() == 6);
     }

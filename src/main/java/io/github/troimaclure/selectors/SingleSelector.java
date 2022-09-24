@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -72,7 +73,8 @@ public class SingleSelector<T> {
     }
 
     public <U extends Comparable<Double>> Double sumDouble(Function<? super T, Double> keyExtractor) {
-        return this.list.stream().reduce(0d, (subtotal, add) -> subtotal + keyExtractor.apply(add), Double::sum);
+        return this.list.stream().reduce(0d, (subtotal, add) -> subtotal + keyExtractor.apply(add),
+                Double::sum);
     }
 
     public <U extends Comparable<Long>> Long sumLong(Function<? super T, Long> keyExtractor) {
@@ -80,7 +82,8 @@ public class SingleSelector<T> {
     }
 
     public <U extends Comparable<Integer>> Integer sumInteger(Function<? super T, Integer> keyExtractor) {
-        return this.list.stream().reduce(0, (subtotal, add) -> subtotal + keyExtractor.apply(add), Integer::sum);
+        return this.list.stream().reduce(0, (subtotal, add) -> subtotal + keyExtractor.apply(add),
+                Integer::sum);
     }
 
     public <U extends Comparable<? super U>> SingleSelector<T> orderBy(Function<? super T, ? extends U> keyExtractor,
@@ -162,8 +165,10 @@ public class SingleSelector<T> {
         return true;
     }
 
-    public <K> Map<K, List<T>> groupBy(Function<? super T, K> keyExtractor) {
-        return this.list.stream().collect(Collectors.groupingBy(keyExtractor));
+    public <K> SingleSelector<Entry<K, List<T>>> groupBy(Function<? super T, K> keyExtractor) {
+        var list = this.list.stream().collect(Collectors.groupingBy(keyExtractor)).entrySet().stream()
+                .collect(Collectors.toList());
+        return new SingleSelector<Entry<K, List<T>>>(list);
     }
 
     public boolean any(Predicate<T> p) {
