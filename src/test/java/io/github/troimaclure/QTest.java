@@ -16,7 +16,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import io.github.troimaclure.Q;
 import io.github.troimaclure.exceptions.QException;
 import io.github.troimaclure.selectors.DualSelector;
 
