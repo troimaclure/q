@@ -246,8 +246,8 @@ public class QTest {
     @Test
     public void testDualMap() {
         var map = Q.from(categories).join(products).on((c, p) -> c.getId() == (p.getId_category()))
-                .groupByLeft(Category::getId).toMap(Pair::getLeft,
-                        Pair::getRight);
+                .groupByLeft(Category::getId).toMap(e -> e.getLeft(),
+                        e -> e.getRight());
         assertTrue(map.get(categories.get(1)).size() == 2);
     }
 
